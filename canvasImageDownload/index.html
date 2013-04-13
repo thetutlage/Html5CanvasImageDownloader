@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.CanvastoPhp.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// loading image file to the canvas
+			$('body').CanvasToPhp();
+			$('body').CanvasToPhp.upload({
+				canvasId: "canvas",
+				image: "455.jpg"
+			});
+			// downloading file
+			$('#download').click(function(){
+				$(this).val('Please wait....');
+				$('body').CanvasToPhp.download({
+					canvasId: "canvas"
+				});
+				setTimeout(function(){
+				$('#download').val('Download');
+				},5000);
+			});
+		});
+	</script>
+
+	<style type="text/css">
+		body{
+			background-color: #f2f2f2;
+			font-family: Arial, "MS Trebuchet", sans-serif;
+			background: #f2f2f2;
+			background: -moz-linear-gradient(top, #e6e6e6, #f2f2f2 5%);
+			background: -webkit-gradient(linear, 0 0, 0 5%, from(#e6e6e6), to(#f2f2f2));
+			border-top: 1px solid white;
+			color: #333;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#header{
+			position: absolute;
+			background: #333;
+			left: 0;
+			right: 0;
+			height: 30px;
+			top: 0;
+		}
+		#wrapper{
+			width: 500px;
+			margin: auto;
+			margin-top: 40px;
+		}
+		#canvasHolder{
+			background: #fff;
+			padding: 10px;
+			width: 400px;
+			margin: auto;
+			height: 300px;
+		}
+		canvas{
+			width: 100%;
+			height: 100%;
+		}
+		#text{
+			color: #555555;
+			font-family: 'Voltaire',sans-serif;
+			font-size: 40px;
+			padding-bottom: 33px;
+			text-align: center;	
+		}
+		#inner_box{
+			text-align: center;
+		}
+		#download{
+			background-color: #B0EF37;
+			border: 1px solid #B0EF37;
+			color: #6FA30A;
+			font-size: 16px;
+			margin-bottom: 14px;
+			padding: 17px 24px;
+			border-radius: 3px 3px 3px 3px;
+			-moz-border-radius: 3px 3px 3px 3px;
+			-webkit-border-radius: 3px 3px 3px 3px;
+			cursor: pointer;
+			display: inline-block;
+			font-weight: bold;
+			line-height: 40px;
+		}
+		#download:hover{
+			opacity: 0.8;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+
+	</div>
+	<div id="wrapper">
+		<div id="info">
+			<div id="text">
+				<p> This demo will show you how to download canvas image using Ajax and Php</p>
+			</div>
+		</div><!-- end info -->
+		<div id="inner_box">
+			<input type="submit" name="download" value="Download" id="download"/>
+		</div>
+		<div id="canvasHolder">
+			<canvas id="canvas"></canvas>
+		</div>
+	</div>
+
+</body>
+</html>
